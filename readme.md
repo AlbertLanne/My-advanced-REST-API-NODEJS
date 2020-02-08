@@ -92,3 +92,16 @@ MembersRouter.route('/:id')
 
 
 ### 2 - ASYNC DATA
+
+- Delete
+```js
+        .delete((req,res)=> {
+            let index = getIndex(req.params.id);
+            if (typeof(index) == 'string'){
+                res.json(error(index))
+            } else {
+                members.splice(index, 1)
+                res.json(success(members))
+            }
+        })
+```
