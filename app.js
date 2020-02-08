@@ -36,7 +36,7 @@ app.get('/api/v1/members/:id', (req,res)=> {
 });
 
 app.put('/api/v1/members/:id', (req,res)=> {
-    
+
     let index = getIndex(req.params.id);
 
     if (typeof(index) == 'string'){
@@ -61,6 +61,23 @@ app.put('/api/v1/members/:id', (req,res)=> {
 
     }
 })
+
+app.delete('/api/v1/members/:id', (req,res)=> {
+
+    let index = getIndex(req.params.id);
+
+    if (typeof(index) == 'string'){
+        res.json(error(index))
+    } else {
+        members.splice(index, 1)
+        res.json(success(members))
+    }
+
+
+})
+
+
+
 
 app.get('/api/v1/members', (req,res)=> {
     if (req.query.max != undefined){
@@ -87,7 +104,7 @@ app.post('/api/v1/members',(req,res)=>{
 
         }else {
             let member ={
-                id: members.length+1,
+                id: createID(),
                 name: req.body.name
             }
             members.push(member)
@@ -111,5 +128,8 @@ function getIndex(id) {
             return i
     }
     return 'wrong id'
-
+}
+// La petite fonction qui recup le dernier id pour rajouet 1
+function createID() {
+    return members[members.length-1].id+1
 }
