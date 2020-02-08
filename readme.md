@@ -89,19 +89,35 @@ MembersRouter.route('/:id')
             }
         })
 ```
-
+---
 
 ### 2 - ASYNC DATA
 
-- Delete
+- Understand async data
+
 ```js
-        .delete((req,res)=> {
-            let index = getIndex(req.params.id);
-            if (typeof(index) == 'string'){
-                res.json(error(index))
-            } else {
-                members.splice(index, 1)
-                res.json(success(members))
-            }
-        })
+console.log('Début')
+setTimeout(() => {
+    console.log('Temps d\'attentes')
+},1500)
+console.log('Fin')
+
 ```
+- Callback
+
+Permet d'appeler du data en différé 
+
+- Promise 
+
+```js
+new Promise((resolve, reject) => {
+setTimeout(()=> {
+resolve('All good')
+}, 1500)
+})
+.then(message => console.log(message))  // Dans le cas si c'est ok
+.catch(err => console.log(err.message)) // Dans le cas d'une erreur
+```
+
+
+- Async/Await
