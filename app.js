@@ -3,7 +3,8 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const app = express()
 // const func = require('functions')
-const {success,error} = require('functions')
+const {success,error} = require('./functions')
+const config = require('./config')
 
 const members = [
     {
@@ -115,8 +116,8 @@ MembersRouter.route('/')
         })
 
 
-app.use('/api/v1/members', MembersRouter)
-app.listen(8080, () => console.log('Started on port 8080'))
+app.use(config.rootAPI+'members', MembersRouter)
+app.listen(config.port, () => console.log('Started on port'+config.port))
 
 function getIndex(id) {
     for (let i = 0; i < members.length; i++){
