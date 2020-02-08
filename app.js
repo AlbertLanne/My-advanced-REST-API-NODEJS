@@ -24,102 +24,98 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extend: true}));
 
-app.get('/api/v1/members/:id', (req,res)=> {
-    let index = getIndex(req.params.id);
+let MembersRouter = express.Router()
 
-    if (typeof(index) == 'string'){
-        res.json(error(index))
-    }else{
-        res.json(success(members[index]))
-    }
-    res.json(success(members[(req.params.id)-1].name))
-});
+MembersRouter.route('/:id')
+            // Recupere membre avec sont ID
+        .get((req,res)=> {
+            let index = getIndex(req.params.id);
 
-app.put('/api/v1/members/:id', (req,res)=> {
-
-    let index = getIndex(req.params.id);
-
-    if (typeof(index) == 'string'){
-        res.json(error(index))
-    }else{
-
-        let same = false;
-
-        for (let i = 0; i < members.length; i++){
-            if (req.body.name == members[i].name && req.params.id != members[i].id){
-                same = true
-                break
+            if (typeof(index) == 'string'){
+                res.json(error(index))
+            }else{
+                res.json(success(members[index]))
             }
-        }
+            res.json(success(members[(req.params.id)-1].name))
+        })
+            // modifie
+        .put((req,res)=> {
 
-        if (same){
-            res.json(error('same name'))
-        }else{
-            members[index].name = req.body.name
-            res.json(success(true))
-        }
+            let index = getIndex(req.params.id);
 
-    }
-})
+            if (typeof(index) == 'string'){
+                res.json(error(index))
+            }else{
 
-app.delete('/api/v1/members/:id', (req,res)=> {
+                let same = false;
 
-    let index = getIndex(req.params.id);
+                for (let i = 0; i < members.length; i++){
+                    if (req.body.name == members[i].name && req.params.id != members[i].id){
+                        same = true
+                        break
+                    }
+                }
 
-    if (typeof(index) == 'string'){
-        res.json(error(index))
-    } else {
-        members.splice(index, 1)
-        res.json(success(members))
-    }
+                if (same){
+                    res.json(error('same name'))
+                }else{
+                    members[index].name = req.body.name
+                    res.json(success(true))
+                }
 
-
-})
-
-
-
-
-app.get('/api/v1/members', (req,res)=> {
-    if (req.query.max != undefined){
-        res.json(success(members.slice(0,req.query.max)))
-    }else {
-        res.json(success(members))
-    }
-})
-
-
-app.post('/api/v1/members',(req,res)=>{
-    if(req.body.name){
-
-        let sameName = false
-        for (  let i =0; i < members.length; i++ ){
-            if (members[i].name == req.body.name){
-                sameName = true
-                break
             }
-        }
+        })
+            // Supprime membre avec sont ID
+        .delete((req,res)=> {
 
-        if (sameName){
-            res.json(error('name already taken'))
+            let index = getIndex(req.params.id);
 
-        }else {
-            let member ={
-                id: createID(),
-                name: req.body.name
+            if (typeof(index) == 'string'){
+                res.json(error(index))
+            } else {
+                members.splice(index, 1)
+                res.json(success(members))
             }
-            members.push(member)
-            res.json(success(member))
-        }
+        })
 
 
+MembersRouter.route('/')
 
-    } else {
-        res.join(error('no name value'))
-    }
-})
+            // recupere tout les membres
+        .get((req,res)=> {
+            if (req.query.max != undefined){
+                res.json(success(members.slice(0,req.query.max)))
+            }else {
+                res.json(success(members))
+            }
+        })
+            // ajoute un membre
+        .post((req,res)=>{
+            if(req.body.name){
+                let sameName = false
+                for (  let i =0; i < members.length; i++ ){
+                    if (members[i].name == req.body.name){
+                        sameName = true
+                        break
+                    }
+                }
+                if (sameName){
+                    res.json(error('name already taken'))
+                }else {
+                    let member ={
+                        id: createID(),
+                        name: req.body.name
+                    }
+                    members.push(member)
+                    res.json(success(member))
+                }
+            } else {
+                res.join(error('no name value'))
+            }
+        })
 
 
-
+app.use('/api/v1/members', MembersRouter)
 app.listen(8080, () => console.log('Started on port 8080'))
 
 function getIndex(id) {
@@ -133,3 +129,4 @@ function getIndex(id) {
 function createID() {
     return members[members.length-1].id+1
 }
+
