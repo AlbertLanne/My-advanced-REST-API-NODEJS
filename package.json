@@ -1,20 +1,19 @@
 {
-  "name": "My-advanced-REST-API-NODEJS",
+  "name": "ExpressJS",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AlbertLanne/My-advanced-REST-API-NODEJS.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AlbertLanne/My-advanced-REST-API-NODEJS/issues"
-  },
-  "homepage": "https://github.com/AlbertLanne/My-advanced-REST-API-NODEJS#readme"
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.2"
+  }
 }
