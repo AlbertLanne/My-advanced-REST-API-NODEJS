@@ -1,0 +1,20 @@
+{
+  "name": "My-advanced-REST-API-NODEJS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlbertLanne/My-advanced-REST-API-NODEJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlbertLanne/My-advanced-REST-API-NODEJS/issues"
+  },
+  "homepage": "https://github.com/AlbertLanne/My-advanced-REST-API-NODEJS#readme"
+}
