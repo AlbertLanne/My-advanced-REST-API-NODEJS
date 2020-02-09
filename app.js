@@ -6,6 +6,18 @@ const app = express()
 const {success,error} = require('./functions')
 const config = require('./config')
 
+const mysql = require('mysql')
+const db = mysql.createConnection(process.env.DATABASE_URL);
+db.connect((err) => {
+    if (err)
+        console.log(err.message)
+    else{
+        console.log('connected')
+
+    }
+
+})
+/**
 const members = [
     {
         id: 1,
@@ -20,6 +32,7 @@ const members = [
         name: 'Albert'
     }
 ]
+*/
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
