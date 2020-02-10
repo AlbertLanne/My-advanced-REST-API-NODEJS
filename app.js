@@ -114,76 +114,15 @@ mysql.createConnection({
     MembersRouter.route('/')
 
         // Récupère tous les membres
-        .get((req, res) => {
-            if (req.query.max != undefined && req.query.max > 0) {
-
-                db.query('SELECT * FROM members LIMIT 0, ?', [req.query.max], (err, result) => {
-                    if (err) {
-                        res.json(error(err.message))
-                    } else {
-                        res.json(success(result))
-                    }
-                })
-
-            } else if (req.query.max != undefined) {
-                res.json(error('Wrong max value'))
-            } else {
-
-                db.query('SELECT * FROM members', (err, result) => {
-                    if (err) {
-                        res.json(error(err.message))
-                    } else {
-                        res.json(success(result))
-                    }
-                })
-
-            }
+        .get(async (req, res) => {
+           let allMembers = await Members.getAll(req.query.max)
+            res.json(checkAndchange((allMembers)))
         })
 
         // Ajoute un membre avec son nom
-        .post((req, res) => {
-
-            if (req.body.name) {
-
-                db.query('SELECT * FROM members WHERE name = ?', [req.body.name], (err, result) => {
-                    if (err) {
-                        res.json(error(err.message))
-                    } else {
-
-                        if (result[0] != undefined) {
-                            res.json(error('name already taken'))
-                        } else {
-
-                            db.query('INSERT INTO members(name) VALUES(?)', [req.body.name], (err, result) => {
-                                if (err) {
-                                    res.json(error(err.message))
-                                } else {
-
-                                    db.query('SELECT * FROM members WHERE name = ?', [req.body.name], (err, result) => {
-
-                                        if (err) {
-                                            res.json(error(err.message))
-                                        } else {
-                                            res.json(success({
-                                                id: result[0].id,
-                                                name: result[0].name
-                                            }))
-                                        }
-
-                                    })
-
-                                }
-                            })
-
-                        }
-
-                    }
-                })
-
-            } else {
-                res.json(error('no name value'))
-            }
-
+        .post(async (req, res) => {
+            let addMember = await Members.add(req.body.name)
+            res.json(checkAndchange(addMember))
         })
 
     app.use(config.rootAPI+'members', MembersRouter)
