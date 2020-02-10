@@ -1,13 +1,18 @@
-require('babel-register')
 const {success, error} = require('./functions')
 const mysql = require('mysql')
+
 const bodyParser = require('body-parser')
 const express = require('express')
 const morgan = require('morgan')
 const config = require('./config')
 
-const db = mysql.createConnection(process.env.DATABASE_URL)
 
+const db = mysql.createConnection({
+    host: 'localhost',
+    database: 'nodejs',
+    user: 'root',
+    password: ''
+})
 
 db.connect((err) => {
 
