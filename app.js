@@ -8,10 +8,10 @@ const config = require('./config')
 
 
 const db = mysql.createConnection({
-    host: 'localhost',
-    database: 'nodejs',
-    user: 'root',
-    password: ''
+    host: 'bfgvnm6ajhbocjxbjmly-mysql.services.clever-cloud.com',
+    database: 'bfgvnm6ajhbocjxbjmly',
+    user: 'uisomclwcgug5cj5',
+    password: '58Eg8vzqeQ4Rx0zxjhFw'
 })
 
 db.connect((err) => {
