@@ -14,7 +14,6 @@ db.connect((err) => {
     if (err)
         console.log(err.message)
     else {
-
         console.log('Connected.')
 
         const app = express()
