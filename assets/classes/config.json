@@ -1,0 +1,29 @@
+{
+  "rootAPI": "/api/v1/",
+  "port": 8080,
+  "db": {
+    "host": "bfgvnm6ajhbocjxbjmly-mysql.services.clever-cloud.com",
+    "database": "bfgvnm6ajhbocjxbjmly",
+    "user": "uisomclwcgug5cj5",
+    "password": "58Eg8vzqeQ4Rx0zxjhFw"
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

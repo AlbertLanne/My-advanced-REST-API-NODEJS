@@ -1,17 +1,17 @@
-const {success, error} = require('./functions')
+const {success, error} = require('./assets/classes/functions')
 const mysql = require('mysql')
 
 const bodyParser = require('body-parser')
 const express = require('express')
 const morgan = require('morgan')
-const config = require('./config')
+const config = require('./assets/classes/config')
 
 
 const db = mysql.createConnection({
-    host: 'bfgvnm6ajhbocjxbjmly-mysql.services.clever-cloud.com',
-    database: 'bfgvnm6ajhbocjxbjmly',
-    user: 'uisomclwcgug5cj5',
-    password: '58Eg8vzqeQ4Rx0zxjhFw'
+    host: config.db.host,
+    database: config.db.database,
+    user: config.db.user,
+    password: config.db.password
 })
 
 db.connect((err) => {
@@ -24,6 +24,8 @@ db.connect((err) => {
         const app = express()
 
         let MembersRouter = express.Router()
+        let Members = require('./assets/classes/members-class')(db, config)
+        console.log(Members)
 
         app.use(morgan('dev'))
         app.use(bodyParser.json());
