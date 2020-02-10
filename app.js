@@ -1,4 +1,4 @@
-const {success, error} = require('./assets/classes/functions')
+const {success, error,checkAndchange} = require('./assets/classes/functions')
 const mysql = require('promise-mysql')
 
 const bodyParser = require('body-parser')
@@ -31,26 +31,14 @@ mysql.createConnection({
     MembersRouter.route('/:id')
 
         // Récupère un membre avec son ID
-        .get((req, res) => {
 
-            db.query('SELECT * FROM members WHERE id = ?', [req.params.id], (err, result) => {
-                if (err) {
-                    res.json(error(err.message))
-                } else {
-
-                    if (result[0] != undefined) {
-                        res.json(success(result[0]))
-                    } else {
-                        res.json(error('Wrong id'))
-                    }
-
-                }
-            })
-
+        .get(async (req, res) => {
+            let member = await Members.getById(req.params.id)
+            res.json(checkAndchange(member))
         })
 
         // Modifie un membre avec ID
-        .put((req, res) => {
+        .put(async(req, res) => {
 
             if (req.body.name) {
 
