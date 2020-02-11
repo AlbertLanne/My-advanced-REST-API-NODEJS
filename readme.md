@@ -8,8 +8,8 @@
 
 ---
 
-- The newbranchXamp branch have a single file for CUDR
-- The ClasseMembersRestructuration have a classe with all CUDR methods. 
+- The SingleFileCUDR branch have a single file for CUDR
+- The SpecificMembersClassesCUDR have a classe with all CUDR methods. 
 
 
 
