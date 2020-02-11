@@ -39,76 +39,14 @@ mysql.createConnection({
 
         // Modifie un membre avec ID
         .put(async(req, res) => {
-
-            if (req.body.name) {
-
-                db.query('SELECT * FROM members WHERE id = ?', [req.params.id], (err, result) => {
-                    if (err) {
-                        res.json(error(err.message))
-                    } else {
-
-                        if (result[0] != undefined) {
-
-                            db.query('SELECT * FROM members WHERE name = ? AND id != ?', [req.body.name, req.params.id], (err, result) => {
-                                if (err) {
-                                    res.json(error(err.message))
-                                } else {
-
-                                    if (result[0] != undefined) {
-                                        res.json(error('same name'))
-                                    } else {
-
-                                        db.query('UPDATE members SET name = ? WHERE id = ?', [req.body.name, req.params.id], (err, result) => {
-                                            if (err) {
-                                                res.json(error(err.message))
-                                            } else {
-                                                res.json(success(true))
-                                            }
-                                        })
-
-                                    }
-
-                                }
-                            })
-
-                        } else {
-                            res.json(error('Wrong id'))
-                        }
-
-                    }
-                })
-
-            } else {
-                res.json(error('no name value'))
-            }
-
+            let updateMember = await Members.update(req.params.id, req.body.name)
+            res.json(checkAndchange(updateMember))
         })
 
         // Supprime un membre avec ID
-        .delete((req, res) => {
-
-            db.query('SELECT * FROM members WHERE id = ?', [req.params.id], (err, result) => {
-                if (err) {
-                    res.json(error(err.message))
-                } else {
-
-                    if (result[0] != undefined) {
-
-                        db.query('DELETE FROM members WHERE id = ?', [req.params.id], (err, result) => {
-                            if (err) {
-                                res.json(error(err.message))
-                            } else {
-                                res.json(success(true))
-                            }
-                        })
-
-                    } else {
-                        res.json(error('Wrong id'))
-                    }
-
-                }
-            })
-
+        .delete(async (req, res) => {
+            let deleteMember = await Members.delete(req.params.id)
+            res.json(checkAndchange(deleteMember))
         })
 
     MembersRouter.route('/')

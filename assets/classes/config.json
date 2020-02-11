@@ -6,6 +6,13 @@
     "database": "bfgvnm6ajhbocjxbjmly",
     "user": "uisomclwcgug5cj5",
     "password": "58Eg8vzqeQ4Rx0zxjhFw"
+  },
+  "errors" : {
+    "wrongID" : "Mauvais ID",
+    "wrongMaxValue" : "Mauvaise valeurs max",
+    "nameAlreadyTaken" : "Nom déja prit",
+    "noNameValue" : "Pas de valeurs de nom",
+    "sameName" : "Le nom est identique"
   }
 }
 

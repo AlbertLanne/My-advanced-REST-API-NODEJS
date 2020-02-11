@@ -9,8 +9,6 @@ module.exports = (_db, _config) => {
 let Members = class {
 
     static getById(id){
-
-
             return new Promise((next)=>{
                 db.query('SELECT * FROM members WHERE id = ?',[id])
                     .then((result) =>{
@@ -18,7 +16,7 @@ let Members = class {
                         if (result[0] != undefined) {
                             next(result[0])
                         } else {
-                            next(new Error('Wrong ID'))
+                            next(new Error(config.errors.wrongID))
                         }
             })
             .catch((err) => next(err))
@@ -51,24 +49,17 @@ let Members = class {
     static add(name){
 
         return new Promise((next)=>{
-
             if (name && name.trim() != '') {
                 name = name.trim()
-
-
-
                 db.query('SELECT * FROM members WHERE name = ?', [name])
                     .then((result)=> {
                         if (result[0] != undefined) {
-                            next(new Error('name already taken'))
+                            next(new Error(config.errors.nameAlreadyTaken))
                         } else {
-
                             return db.query('INSERT INTO members(name) VALUES(?)', [name])
-
                         }
                     })
                     .then(() => {
-
                         return db.query('SELECT * FROM members WHERE name = ?', [name])
                     })
                     .then((result)=>{
@@ -79,10 +70,59 @@ let Members = class {
                     })
                     .catch((err)=> next(err))
             } else {
-                next(new Error('no name value'))
+                next(new Error(config.errors.noNameValue))
             }
-
         })
-
     }
+
+    static update(id,name) {
+        return new Promise((next)=>{
+            if (name && name.trim() != '') {
+                name = name.trim()
+                db.query('SELECT * FROM members WHERE id = ?', [id])
+                    .then((result)=>{
+                        if (result[0] != undefined) {
+                            return db.query('SELECT * FROM members WHERE name = ? AND id != ?', [name, id])
+                        } else {
+                            next(new Error(config.errors.wrongID))
+                        }
+                    })
+                    .then((result)=>{
+                        if (result[0] != undefined) {
+                            next(new Error(config.errors.sameName))
+                        } else {
+                            return db.query('UPDATE members SET name = ? WHERE id = ?', [name, id])
+                        }
+                    })
+                    .then(()=> next(true))
+                    .catch((err)=> next(err))
+            } else {
+                next(new Error(config.errors.noNameValue))
+            }
+        })
+    }
+
+    static delete(id) {
+        return new Promise((next)=>{
+
+             db.query('SELECT * FROM members WHERE id = ?', [id])
+                 .then((result)=>{
+
+                     if (result[0] != undefined) {
+                         return db.query('DELETE FROM members WHERE id = ?', [id])
+                     } else {
+                         next(new Error(config.errors.wrongID))
+                     }
+                 })
+                 .then(()=> next(true))
+                 .catch((err)=> next(err))
+        })
+    }
+
+
+
+
+
 }
+
+
