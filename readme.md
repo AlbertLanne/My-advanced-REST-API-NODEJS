@@ -8,7 +8,10 @@
 
 ---
 
-> On the newbranchXamp you can find a wait to communicate with xamp server and CUDR 
+- The newbranchXamp branch have a single file for CUDR
+- The ClasseMembersRestructuration have a classe with all CUDR methods. 
+
+
 
 
 ---
@@ -19,7 +22,11 @@ npm install
 ```
 ### Compiles and hot-reloads for development with nodemon
 ```
+
+# serve with hot reload at localhost:8080
 npm run start
+
+# swaggers at localhost:8080/api/v1/api-docs/#/
 ```
 
 
@@ -125,3 +132,112 @@ resolve('All good')
 
 
 - Async/Await
+
+---
+
+#Structure de l'api
+```json
+
+{
+  "info": {
+    "title": " DOCUMENTATION REST API",
+    "version": "3.1.2",
+    "license": {
+      "name": "ISC"
+    },
+    "description": "template api rest"
+  },
+  "basePath": "/api/v1",
+  "host": "localhost:8080",
+  "tags": [
+    {
+      "name": "members",
+      "description": "Méthodes permettant de gérer les utilisateurs"
+    }
+
+  ],
+  "paths": {
+    "members/{id}": {
+      "get": {
+        "tags": ["members"],
+        "summary": "members/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      },
+      "put": {
+        "tags": ["members"],
+        "summary": "members/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "tags": ["members"],
+        "summary": "members/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "members": {
+      "get": {
+        "tags": ["members"],
+        "summary": "members",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "max",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {}
+      },
+      "post": {
+        "tags": ["members"],
+        "summary": "members",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    }
+  },
+  "swagger": "2.0"
+}
+
+```

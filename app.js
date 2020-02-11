@@ -1,8 +1,12 @@
-const {success, error,checkAndchange} = require('./assets/classes/functions')
+const {checkAndchange} = require('./assets/classes/functions')
 const mysql = require('promise-mysql')
 
 const bodyParser = require('body-parser')
+
 const express = require('express')
+const swaggerUi = require('swagger-ui-express')
+const swaggerDocument = require('./assets/swagger.json')
+
 const morgan = require('morgan')
 const config = require('./assets/classes/config')
 
@@ -26,7 +30,11 @@ mysql.createConnection({
 
     app.use(morgan('dev'))
     app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.urlencoded({ extended: true }))
+
+    // SWAGGERS  http://localhost:8080/api/v1/api-docs/#/
+    app.use(config.rootAPI + 'api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
     MembersRouter.route('/:id')
 
