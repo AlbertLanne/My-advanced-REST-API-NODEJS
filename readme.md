@@ -8,38 +8,38 @@
 
 ---
 
+
+- The master branch have a classe "members" with all CUDR methods (GET,PUT,POST,DELETE). 
 - The SingleFileCUDR branch have a single file for CUDR
-- The SpecificMembersClassesCUDR have a classe with all CUDR methods. 
-
-
-
+- The HTML branch use the classe "members" with front end vanilla JS.
 
 ---
 
 ## Project setup
+
 ```
+# Install dependecies
+
+
 npm install
 ```
-### Compiles and hot-reloads for development with nodemon
-```
 
+### Compiles and hot-reloads for development with nodemon
+
+```
 # serve with hot reload at localhost:8080
+
 npm run start
 
 # swaggers at localhost:8080/api/v1/api-docs/#/
 ```
 
 
-### 1 - API REST SIMPLISTE
-
-
-
-
+### Structure of SingleFileCUDR
 
 ---
 
--The object of routes. This exemple show only for the specific ID
-
+- This exemple show only for the specific ID
 
 
 ```js
@@ -102,6 +102,17 @@ MembersRouter.route('/:id')
 ```
 ---
 
+
+
+### Members Classe
+
+---
+
+```js
+#incoming
+```
+
+
 ### 2 - ASYNC DATA
 
 - Understand async data
@@ -115,9 +126,6 @@ console.log('Fin')
 
 ```
 - Callback
-
-Permet d'appeler du data en différé 
-
 - Promise 
 
 ```js
@@ -135,7 +143,11 @@ resolve('All good')
 
 ---
 
-#Structure de l'api
+# Structure of the api (classes members)
+
+###
+The structure created with swaggers expresss.
+
 ```json
 
 {
