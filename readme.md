@@ -3,7 +3,7 @@
 
 ---
 
-#### This repo is a training of API REST with express and body parser for my diploma project of  Higher Technical Certificate (BTS).
+> This repo is a training of API REST with express and body parser for my diploma project of  Higher Technical Certificate (BTS).
 
 ---
 
@@ -17,27 +17,30 @@
 
 ## Project setup
 
-```
-# Install dependecies
-
-
-npm install
-```
 
 ### Compiles and hot-reloads for development with nodemon
 
 ```
+# Install dependecies
+npm install
 # serve with hot reload at localhost:8080
-
 npm run start
-
-# swaggers at localhost:8080/api/v1/api-docs/#/
 ```
+##### The api map with Swaggers at localhost:8080/api/v1/api-docs/#/
+
+
+
+---
+
+## Routes of the API
+
+<a><img src="https://i.imgur.com/rj7G7eH.png" title="c++ app made in qt" alt="docker container SQL"></a>
+
+---
 
 
 ### Structure of SingleFileCUDR
 
----
 
 - This exemple show only for the specific ID
 
