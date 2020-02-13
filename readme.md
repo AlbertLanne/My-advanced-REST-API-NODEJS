@@ -3,7 +3,6 @@
 
 ---
 
-
 #### This repo is a training of API REST with express and body parser for my diploma project of  Higher Technical Certificate (BTS).
 
 ---
@@ -13,6 +12,7 @@
 - The SingleFileCUDR branch have a single file for CUDR
 - The HTML branch use the classe "members" with front end vanilla JS.
 
+> To test the API i preconise to use postman for HTTP request.
 ---
 
 ## Project setup
@@ -108,8 +108,43 @@ MembersRouter.route('/:id')
 
 ---
 
+
 ```js
-#incoming
+   let MembersRouter = express.Router()
+   let Members = require('./assets/classes/members-class')(db, config)
+    MembersRouter.route('/:id')
+
+```
+
+
+```js
+   let MembersRouter = express.Router()
+   let Members = require('./assets/classes/members-class')(db, config)
+
+```
+
+```js
+  MembersRouter.route('/:id')
+
+        // Récupère un membre avec son ID
+
+        .get(async (req, res) => {
+            let member = await Members.getById(req.params.id)
+            res.json(checkAndchange(member))
+        })
+
+        // Modifie un membre avec ID
+        .put(async(req, res) => {
+            let updateMember = await Members.update(req.params.id, req.body.name)
+            res.json(checkAndchange(updateMember))
+        })
+
+        // Supprime un membre avec ID
+        .delete(async (req, res) => {
+            let deleteMember = await Members.delete(req.params.id)
+            res.json(checkAndchange(deleteMember))
+        })
+
 ```
 
 
