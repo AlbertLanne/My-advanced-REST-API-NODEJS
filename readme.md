@@ -1,3 +1,10 @@
+
+[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger)
+[![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+
+
 # My advanced REST API NODEJS
 
 
@@ -5,7 +12,6 @@
 
 > This repo is a training of API REST with express and body parser for my diploma project of  Higher Technical Certificate (BTS).
 
----
 
 
 - The master branch have a classe "members" with all CUDR methods (GET,PUT,POST,DELETE). 
@@ -13,6 +19,7 @@
 - The HTML branch use the classe "members" with front end vanilla JS.
 
 > To test the API i preconise to use postman for HTTP request.
+
 ---
 
 ## Project setup
@@ -33,6 +40,7 @@ npm run start
 ---
 
 ## Routes of the API
+
 
 <a><img src="https://i.imgur.com/rj7G7eH.png" title="c++ app made in qt" alt="docker container SQL"></a>
 
@@ -103,13 +111,12 @@ MembersRouter.route('/:id')
             }
         })
 ```
+
 ---
-
-
 
 ### Members Classe
 
----
+
 
 
 ```js
@@ -181,113 +188,3 @@ resolve('All good')
 
 ---
 
-# Structure of the api (classes members)
-
-###
-The structure created with swaggers expresss.
-
-```json
-
-{
-  "info": {
-    "title": " DOCUMENTATION REST API",
-    "version": "3.1.2",
-    "license": {
-      "name": "ISC"
-    },
-    "description": "template api rest"
-  },
-  "basePath": "/api/v1",
-  "host": "localhost:8080",
-  "tags": [
-    {
-      "name": "members",
-      "description": "Méthodes permettant de gérer les utilisateurs"
-    }
-
-  ],
-  "paths": {
-    "members/{id}": {
-      "get": {
-        "tags": ["members"],
-        "summary": "members/{id}",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {}
-      },
-      "put": {
-        "tags": ["members"],
-        "summary": "members/{id}",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {}
-      },
-      "delete": {
-        "tags": ["members"],
-        "summary": "members/{id}",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "members": {
-      "get": {
-        "tags": ["members"],
-        "summary": "members",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "max",
-            "in": "query",
-            "required": false
-          }
-        ],
-        "responses": {}
-      },
-      "post": {
-        "tags": ["members"],
-        "summary": "members",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "name",
-            "in": "body",
-            "required": true
-          }
-        ],
-        "responses": {}
-      }
-    }
-  },
-  "swagger": "2.0"
-}
-
-```
