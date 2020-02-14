@@ -1,0 +1,26 @@
+{
+  "name": "serveurWeb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "babel-register": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "nodemon": "^2.0.2",
+    "promise-mysql": "^4.1.3",
+    "swagger-ui-express": "^4.1.3",
+    "twig": "^1.14.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.9.0"
+  }
+}
