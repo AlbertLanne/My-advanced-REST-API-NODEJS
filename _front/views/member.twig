@@ -8,29 +8,26 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-  <title>Membres</title>
+  <title>Membre</title>
 </head>
 <body class="p-5">
 
-<h1 class="mb-5 text-center">Tous les membres</h1>
+<h1 class="mb-5 text-center">Un membre</h1>
 
 <table class="table table-dark">
   <thead>
   <tr>
-    {% for index, value in members[0] %}
+    {% for index, value in members %}
       <th scope="col">{{ index }}</th>
     {% endfor %}
   </tr>
   </thead>
   <tbody>
-  {% for member in members %}
-    <tr style="cursor: pointer">
-      {% for value in member %}
-        <td onclick="document.location='/edit/{{ member.id }}'">{{ value }} </td>
-
-      {% endfor %}
+    <tr>
+        {% for value in member %}
+          <td scope="col">{{ value }}</td>
+        {% endfor %}
     </tr>
-  {% endfor %}
   </tbody>
 </table>
 
