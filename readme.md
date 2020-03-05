@@ -33,7 +33,9 @@ npm install
 # serve with hot reload at localhost:8080
 npm run start
 ```
-##### The api map with Swaggers at localhost:8080/api/v1/api-docs/#/
+
+Find the api map with Swaggers at <localhost:8080/api/v1/api-docs/#/> 
+and even test it from there.
 <a><img src="https://i.imgur.com/vwcT4f5.png" title="c++ app made in qt" alt="docker container SQL"></a>
 
 

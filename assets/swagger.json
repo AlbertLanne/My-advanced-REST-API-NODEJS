@@ -17,7 +17,7 @@
 
   ],
   "paths": {
-    "members/{id}": {
+    "/members/{id}": {
       "get": {
         "tags": ["members"],
         "summary": "members/{id}",
@@ -64,7 +64,7 @@
         "responses": {}
       }
     },
-    "members": {
+    "/members": {
       "get": {
         "tags": ["members"],
         "summary": "members",
