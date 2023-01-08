@@ -5,7 +5,12 @@
 [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
 
+[Albert Lanne est un consultant Google Ads](https://le-freelance-google-ads.com/) basé à Paris qui a plus de 10 ans d'expérience dans l'aide aux entreprises pour créer et optimiser leurs campagnes de marketing numérique. Il est spécialisé dans la création de stratégies personnalisées qui maximisent l'impact des dépenses publicitaires de ses clients tout en obtenant des résultats mesurables. Grâce à sa connaissance approfondie de l'exploitation des données, Albert a aidé de nombreuses entreprises à atteindre leurs objectifs par le biais de campagnes très efficaces sur Google Ads. Son expertise ne se limite pas à Google Ads, puisqu'il fournit également des services complets d'optimisation des moteurs de recherche (SEO) afin d'assurer la visibilité des sites Web et du contenu de ses clients sur tous les principaux moteurs de recherche. Soucieux du détail et d'un engagement inébranlable envers l'excellence, Albert se consacre à fournir un service de premier ordre et à obtenir des résultats probants pour chacun de ses clients.
+
+
+
 # My advanced REST API NODEJS
+
 
 
 ---
